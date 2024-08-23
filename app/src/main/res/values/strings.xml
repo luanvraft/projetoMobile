@@ -6,4 +6,12 @@
     <string name="voltar">Voltar</string>
     <string name="uma_pokedex">É uma Pokedex</string>
     <string name="imagem_do_pokemon">Imagem do Pokemon</string>
+    <string name="ask_localização">Quer descobrir sua localização? Aperte no botão :)</string>
+    <string name="localiza_o">Localização</string>
+    <string name="txtInfo">Agora aperte nesse botão ver sua localização no Maps</string>
+    <string name="pegar_localiza_o">Pegar localização</string>
+    <string name="maps">Maps</string>
+    <string name="aux"><![CDATA[<-]]></string>
+    <string name="longetude">Longetude</string>
+    <string name="latitude">Latitude</string>
 </resources>

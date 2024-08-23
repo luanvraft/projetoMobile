@@ -58,7 +58,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/voltar"
-                android:src="@drawable/button_back"/>
+                android:src="@drawable/ic_btn_back"/>
 
             <ImageButton
                 android:id="@+id/btn_next"
@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/avan_ar"
-                android:src="@drawable/button_next"/>
+                android:src="@drawable/ic_btn_next"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
