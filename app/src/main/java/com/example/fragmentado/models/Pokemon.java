@@ -1,10 +1,13 @@
 package com.example.fragmentado.models;
 
 public class Pokemon {
-    private String name;
+    private final String name;
 
-    public String getName() {
-        return name;
+    public Pokemon(String name) {
+        this.name = name;
     }
 
+    public String getName() {
+        return name.substring(0, 1).toUpperCase() + name.substring(1);
+    }
 }

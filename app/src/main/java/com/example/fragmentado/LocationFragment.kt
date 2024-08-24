@@ -1,6 +1,5 @@
 package com.example.fragmentado
 
-
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,45 +10,50 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity.LOCATION_SERVICE
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 
-
-class LocalizacaoActivity : AppCompatActivity() {
+class LocationFragment : Fragment() {
     private var latitude: String = ""
     private var longitude: String = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_localizacao)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_location, container, false)
 
-        val btnGPS       : Button   = findViewById(R.id.btn_gps)
-        val btnMaps      : Button   = findViewById(R.id.btn_localizacaoWeb)
-        val btnBack      : Button   = findViewById(R.id.btn_voltarGPS)
-        val txtInfo      : TextView = findViewById(R.id.txtInfo)
-        val txtLatitude  : TextView = findViewById(R.id.txtLatitude)
-        val txtLongitude : TextView = findViewById(R.id.txtLongitude)
+        val btnGPS: Button = view.findViewById(R.id.btn_gps)
+        val btnMaps: Button = view.findViewById(R.id.btn_localizacaoWeb)
+        val txtInfo: TextView = view.findViewById(R.id.txtInfo)
+        val txtLatitude: TextView = view.findViewById(R.id.txtLatitude)
+        val txtLongitude: TextView = view.findViewById(R.id.txtLongitude)
 
-        txtInfo.visibility      = View.INVISIBLE
-        btnMaps.visibility      = View.INVISIBLE
-        btnMaps.isEnabled       = false
-        txtLatitude.visibility  = View.INVISIBLE
+        txtInfo.visibility = View.INVISIBLE
+        btnMaps.visibility = View.INVISIBLE
+        btnMaps.isEnabled = false
+        txtLatitude.visibility = View.INVISIBLE
         txtLongitude.visibility = View.INVISIBLE
 
         btnGPS.setOnClickListener {
             pedirPermissoes()
             Handler(Looper.getMainLooper()).postDelayed({
-                txtInfo.visibility      = View.VISIBLE
-                btnMaps.visibility      = View.VISIBLE
-                btnMaps.isEnabled       = true
-                txtLatitude.visibility  = View.VISIBLE
+                txtInfo.visibility = View.VISIBLE
+                btnMaps.visibility = View.VISIBLE
+                btnMaps.isEnabled = true
+                txtLatitude.visibility = View.VISIBLE
                 txtLongitude.visibility = View.VISIBLE
             }, 5000)
         }
+
         btnMaps.setOnClickListener {
             openBrowser(
                 "https://www.google.com/maps/place/+" + latitude + "+" + longitude +
@@ -58,23 +62,26 @@ class LocalizacaoActivity : AppCompatActivity() {
                         "%3D%3D"
             )
         }
-        btnBack.setOnClickListener {
-            finish()
-        }
+        return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        pedirPermissoes()
     }
 
     private fun pedirPermissoes() {
         if (ActivityCompat.checkSelfPermission(
-                this,
+                requireActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
             && ActivityCompat.checkSelfPermission(
-                this,
+                requireActivity(),
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(
-                this,
+                requireActivity(),
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 1
             )
@@ -85,7 +92,7 @@ class LocalizacaoActivity : AppCompatActivity() {
         requestCode: Int,
         permissions: Array<String>, grantResults: IntArray
     ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        requireActivity().onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             1 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager
@@ -94,7 +101,7 @@ class LocalizacaoActivity : AppCompatActivity() {
                     configurarServico()
                 } else {
                     Toast.makeText(
-                        this, "Não vai funcionar!!!", Toast
+                        requireActivity(), "Não vai funcionar!!!", Toast
                             .LENGTH_LONG
                     ).show()
                 }
@@ -105,14 +112,14 @@ class LocalizacaoActivity : AppCompatActivity() {
 
     private fun configurarServico() {
         try {
-            val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+            val locationManager =
+                requireActivity().getSystemService(LOCATION_SERVICE) as LocationManager
 
             val locationListener: LocationListener = object : LocationListener {
                 override fun onLocationChanged(location: Location) {
                     atualizar(location)
                 }
 
-                @Deprecated("Deprecated in Java")
                 override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
                 }
 
@@ -122,27 +129,27 @@ class LocalizacaoActivity : AppCompatActivity() {
             }
             locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER,
-                0,
+                1000,
                 0f,
                 locationListener
             )
         } catch (ex: SecurityException) {
-            Toast.makeText(this, ex.message, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireActivity(), ex.message, Toast.LENGTH_LONG).show()
         }
     }
 
     fun atualizar(location: Location) {
-        val latPoint : Double = location.latitude
-        val lngPoint : Double = location.longitude
+        val latPoint: Double = location.latitude
+        val lngPoint: Double = location.longitude
 
-        latitude  = latPoint.toString()
+        latitude = latPoint.toString()
         longitude = lngPoint.toString()
 
-        val txtLatitude  : TextView = findViewById(R.id.txtLatitude)
-        val txtLongitude : TextView = findViewById(R.id.txtLongitude)
+        val txtLatitude: TextView? = view?.findViewById(R.id.txtLatitude)
+        val txtLongitude: TextView? = view?.findViewById(R.id.txtLongitude)
 
-        txtLatitude.text  = latitude
-        txtLongitude.text = longitude
+        txtLatitude?.text = latitude
+        txtLongitude?.text = longitude
     }
 
     private fun openBrowser(url: String) {
@@ -150,4 +157,5 @@ class LocalizacaoActivity : AppCompatActivity() {
         val iUri = Intent(Intent.ACTION_VIEW, webpage)
         startActivity(iUri)
     }
+
 }

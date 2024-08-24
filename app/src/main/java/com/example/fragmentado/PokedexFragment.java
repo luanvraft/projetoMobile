@@ -1,13 +1,17 @@
 package com.example.fragmentado;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.fragmentado.api.ApiService;
@@ -19,24 +23,26 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PokedexActivity extends AppCompatActivity {
-    public static final String TAG = PokedexActivity.class.getSimpleName();
+public class PokedexFragment extends Fragment {
+    private static final String TAG = PokedexFragment.class.getSimpleName();
     private Retrofit retrofit;
     private int pokeNumber = 1;
     private TextView txtPokeName;
     private ImageView img;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pokedex);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_pokedex,
+                container, false);
 
-        ImageButton btnBack = findViewById(R.id.btn_back);
-        ImageButton btnNext = findViewById(R.id.btn_next);
-        img = findViewById(R.id.img_pokemon);
-        txtPokeName = findViewById(R.id.txt_name);
+
+        ImageButton btnBack = view.findViewById(R.id.btn_back);
+        ImageButton btnNext = view.findViewById(R.id.btn_next);
+        img = view.findViewById(R.id.img_pokemon);
+        txtPokeName = view.findViewById(R.id.txt_name);
 
         btnBack.setOnClickListener(v -> {
-            if(pokeNumber == 1) {
+            if (pokeNumber == 1) {
                 return;
             }
             pokeNumber--;
@@ -44,18 +50,21 @@ public class PokedexActivity extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(v -> {
-            if(pokeNumber == 649) {
-                return;
-            }
             pokeNumber++;
             getData();
         });
-
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        getData();
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         getData();
     }
 
