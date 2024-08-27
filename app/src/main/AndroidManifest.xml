@@ -16,10 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fragmentado">
         <activity
-            android:name=".LocalizacaoActivity"
+            android:name=".LocationFragment"
             android:exported="false" />
         <activity
-            android:name=".PokedexActivity"
+            android:name=".PokedexFragment"
+            android:exported="false" />
+        <activity
+            android:name=".HomeFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ReferenciaFragment"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
