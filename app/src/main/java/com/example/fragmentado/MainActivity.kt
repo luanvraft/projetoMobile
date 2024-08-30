@@ -2,7 +2,6 @@ package com.example.fragmentado
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,8 +20,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -52,6 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home        -> replaceFragment(HomeFragment())
             R.id.nav_location    -> replaceFragment(LocationFragment())
             R.id.nav_pokedex     -> replaceFragment(PokedexFragment())
+            R.id.nav_db          -> replaceFragment(ArmazenarPokemonFragment())
             R.id.nav_referencias -> replaceFragment(ReferenciaFragment())
             R.id.nav_logout      -> finishAffinity()
         }

@@ -51,7 +51,7 @@ class LocationFragment : Fragment() {
                 btnMaps.isEnabled = true
                 txtLatitude.visibility = View.VISIBLE
                 txtLongitude.visibility = View.VISIBLE
-            }, 5000)
+            }, 3000)
         }
 
         btnMaps.setOnClickListener {

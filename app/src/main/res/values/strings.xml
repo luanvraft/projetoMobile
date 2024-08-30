@@ -6,7 +6,7 @@
     <string name="voltar">Voltar</string>
     <string name="uma_pokedex">É uma Pokedex</string>
     <string name="imagem_do_pokemon">Imagem do Pokemon</string>
-    <string name="ask_localização">Quer descobrir sua localização? Aperte no botão :)</string>
+    <string name="ask_localização">Quer descobrir sua localização? Aperte no botão</string>
     <string name="localiza_o">Localização</string>
     <string name="txtInfo">Somente perte nesse botão para ver sua localização no Maps DEPOIS que os
         textos acima se tornarem números</string>
@@ -23,4 +23,9 @@
     <string name="logo">Logo</string>
     <string name="open_nav">open_nav</string>
     <string name="close_nav">close_nav</string>
+    <string name="emailContato">Contato: mastery@alu.ufc.br</string>
+    <string name="armazenar_pok_mon">Armazenar Pokémon</string>
+    <string name="controle_da_m_sica">Tocar música</string>
+    <string name="broadcastOn">Modo avião está ligado!</string>
+    <string name="broadcastOff">Modo avião está desligado!</string>
 </resources>
