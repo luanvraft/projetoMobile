@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home        -> replaceFragment(HomeFragment())
             R.id.nav_location    -> replaceFragment(LocationFragment())
             R.id.nav_pokedex     -> replaceFragment(PokedexFragment())
-            R.id.nav_db          -> replaceFragment(ArmazenarPokemonFragment())
             R.id.nav_referencias -> replaceFragment(ReferenciaFragment())
             R.id.nav_logout      -> finishAffinity()
         }

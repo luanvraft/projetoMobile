@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fragmentado">
         <activity
+            android:name=".ArmazenarPokemonActivity"
+            android:exported="false" />
+        <activity
             android:name=".PutExtraActivity"
             android:exported="false" />
         <activity
