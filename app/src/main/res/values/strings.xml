@@ -39,6 +39,6 @@
     <string name="uso_do_sensor_do_gps">Uso do sensor do GPS</string>
     <string name="formata_o_do_pokename">Formatação do PokeName</string>
     <string name="navega_o_com_fragment">Navegação com Fragment</string>
-    <string name="migra_o_de_c_digo_e_sevice">Migração de código e sevice</string>
+    <string name="migra_o_de_c_digo_e_sevice">Migração de código e service</string>
     <string name="broadcastreceiver">BroadcastReceiver</string>
 </resources>
