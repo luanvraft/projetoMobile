@@ -14,13 +14,14 @@
         android:background="@color/blue"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text="Armazenar Pokémon"
+        android:text="@string/armazenar_pok_mon"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/btn_voltar"
         android:layout_width="50dp"
@@ -35,7 +36,7 @@
         android:id="@+id/poke_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite o nome do Pokémon"
+        android:hint="@string/digite_o_nome_do_pok_mon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titulo_DBPokemon" />
 
@@ -43,7 +44,7 @@
         android:id="@+id/poke_type1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite o tipo 1 do Pokémon"
+        android:hint="@string/digite_o_tipo_1_do_pok_mon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/poke_name" />
 
@@ -51,7 +52,7 @@
         android:id="@+id/poke_type2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite o tipo 2 do Pokémon (se tiver)"
+        android:hint="@string/digite_o_tipo_2_do_pok_mon_se_tiver"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/poke_type1" />
 
@@ -66,7 +67,7 @@
             android:id="@+id/btn_salvar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enviar"
+            android:text="@string/enviar"
             android:layout_marginStart="57sp"
             android:layout_marginEnd="100dp"/>
 
@@ -74,7 +75,7 @@
             android:id="@+id/btn_armazenamento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Conferir"/>
+            android:text="@string/conferir"/>
 
     </LinearLayout>
 

@@ -28,4 +28,17 @@
     <string name="controle_da_m_sica">Tocar música</string>
     <string name="broadcastOn">Modo avião está ligado!</string>
     <string name="broadcastOff">Modo avião está desligado!</string>
+    <string name="digite_o_nome_do_pok_mon">Digite o nome do Pokémon</string>
+    <string name="digite_o_tipo_1_do_pok_mon">Digite o tipo 1 do Pokémon</string>
+    <string name="digite_o_tipo_2_do_pok_mon_se_tiver">Digite o tipo 2 do Pokémon (se tiver)</string>
+    <string name="enviar">Enviar</string>
+    <string name="conferir">Conferir</string>
+    <string name="refer_ncias">Referências</string>
+    <string name="abrir">Abrir</string>
+    <string name="api_da_pok_dex">API da Pokédex</string>
+    <string name="uso_do_sensor_do_gps">Uso do sensor do GPS</string>
+    <string name="formata_o_do_pokename">Formatação do PokeName</string>
+    <string name="navega_o_com_fragment">Navegação com Fragment</string>
+    <string name="migra_o_de_c_digo_e_sevice">Migração de código e sevice</string>
+    <string name="broadcastreceiver">BroadcastReceiver</string>
 </resources>

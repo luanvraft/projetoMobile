@@ -31,11 +31,11 @@ class LocationFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_location, container, false)
 
-        val btnGPS: Button = view.findViewById(R.id.btn_gps)
-        val btnMaps: Button = view.findViewById(R.id.btn_localizacaoWeb)
-        val txtInfo: TextView = view.findViewById(R.id.txtInfo)
-        val txtLatitude: TextView = view.findViewById(R.id.txtLatitude)
-        val txtLongitude: TextView = view.findViewById(R.id.txtLongitude)
+        val btnGPS       : Button   = view.findViewById(R.id.btn_gps)
+        val btnMaps      : Button   = view.findViewById(R.id.btn_localizacaoWeb)
+        val txtInfo      : TextView = view.findViewById(R.id.txtInfo)
+        val txtLatitude  : TextView = view.findViewById(R.id.txtLatitude)
+        val txtLongitude : TextView = view.findViewById(R.id.txtLongitude)
 
         txtInfo.visibility = View.INVISIBLE
         btnMaps.visibility = View.INVISIBLE
@@ -88,6 +88,7 @@ class LocationFragment : Fragment() {
         } else configurarServico()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>, grantResults: IntArray
@@ -120,6 +121,7 @@ class LocationFragment : Fragment() {
                     atualizar(location)
                 }
 
+                @Deprecated("Deprecated in Java")
                 override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
                 }
 

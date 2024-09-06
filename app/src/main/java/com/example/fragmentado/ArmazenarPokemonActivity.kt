@@ -23,18 +23,18 @@ class ArmazenarPokemonActivity : AppCompatActivity() {
         val btnArmazenamento: Button = findViewById(R.id.btn_armazenamento)
         val btnBack: ImageButton = findViewById(R.id.btn_voltar)
 
-        val name: String = pokeName.text.toString()
-        val type1: String = pokeType1.text.toString()
-        var type2: String = pokeType2.text.toString()
+
 
         btnBack.setOnClickListener {
             finish()
         }
 
         btnSalvar.setOnClickListener {
-            if (type2.isEmpty()) {
-                type2 = "Sem 2º tipo"
-            }else{}
+            val name: String = pokeName.text.toString()
+            val type1: String = pokeType1.text.toString()
+            var type2: String = pokeType2.text.toString()
+
+            if (type2.isEmpty()) type2 = "Sem 2º tipo"
             dbHelper.insertData(name, type1, type2)
         }
         btnArmazenamento.setOnClickListener {
